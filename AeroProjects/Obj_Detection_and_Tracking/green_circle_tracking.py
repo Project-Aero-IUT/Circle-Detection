@@ -18,7 +18,7 @@ kernel = np.ones((5, 5), np.uint8)
 movement_threshold = 7
 radius_threshold = 3
 
-# Open CSV files in write mode (overwrites previous data)
+
 movement_file = open('movements.csv', mode='w', newline='')
 movement_writer = csv.writer(movement_file)
 movement_writer.writerow(['Timestamp_UTC', 'Timestamp_Readable', 'Direction'])
@@ -99,10 +99,9 @@ while True:
     fps = 1 / frame_delay if frame_delay > 0 else 0
     prev_time = curr_time
 
-    # Local time string for human-friendly CSV
+   
     timestamp_readable = datetime.now().strftime('%H:%M:%S.%f')[:-3]
 
-    # Write logs to CSV
     movement_writer.writerow([curr_time, timestamp_readable, direction])
     frame_writer.writerow([curr_time, timestamp_readable, f"{frame_delay:.6f}", f"{fps:.2f}", f"{accuracy:.4f}"])
 
